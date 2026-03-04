@@ -1,0 +1,1 @@
+A REST API that detects whether a face image is real or AI-generated. Built with FastAPI and a fine-tuned EfficientNet model, it accepts an image upload and returns a prediction with a confidence score. Includes face detection to isolate faces before classification and Grad-CAM heatmap generation to visually explain what the model focused on
