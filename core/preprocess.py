@@ -4,8 +4,8 @@ import torch
 from torchvision import transforms
 from PIL import Image
 
-#Detects face in image, loads cascade classifier and runs image through it. Stores the faces in a list with a capacity of 5.
-#If faces are not found, it returns none, if faces are found, its slices up into 4 regions, the face and distance from top and left edge
+# Detects face in image, loads cascade classifier and runs image through it. Stores the faces in a list with a capacity of 5.
+# If faces are not found, it returns none, if faces are found, its slices up into 4 regions, the face and distance from top and left edge
 def detect_face(image):
     detector = cv.CascadeClassifier(cv.data.haarcascades + "haarcascade_frontalface_default.xml")
     image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
