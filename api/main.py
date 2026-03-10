@@ -19,9 +19,8 @@ async def get_image(file: UploadFile = File(...)):
 
     tensor = preprocess_image(cv_image)
     if tensor is None:
-        raise HTTPException(status_code = 400, detail ="No Face Found")
+        raise HTTPException(status_code = 400, detail = "No Face Found")
     
     label, confidence = predict(model, tensor)
     
     return PredictionResponse(label = label, confidence = confidence)
-

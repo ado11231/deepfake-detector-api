@@ -43,11 +43,3 @@ def preprocess_image(image):
     tensor = tensor.unsqueeze(0)
 
     return tensor
-
-
-
-
-
-        
-
-
