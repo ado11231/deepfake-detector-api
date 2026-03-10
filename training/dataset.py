@@ -1,9 +1,9 @@
+# Dataset class for loading real and fake face images from two folders.
+# Builds a path/label list on init, returns dataset size, and loads images as tensors by index.
 import os
 from torch.utils.data import Dataset
 from PIL import Image
 
-# Dataset class for loading real and fake face images from two folders.
-# Builds a path/label list on init, returns dataset size, and loads images as tensors by index.
 class DeepfakeDataset(Dataset):
 
     def __init__(self, path, transform):

@@ -1,3 +1,7 @@
+# Training script for the deepfake detector model.
+# Loads the dataset, splits into train/val sets, and runs the training loop for a set number of epochs.
+# Each epoch trains on batches, calculates loss, backpropagates, and updates weights.
+# Validates after each epoch to monitor performance, then saves the final weights to model/detector.pth.
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -7,10 +11,6 @@ from training.dataset import DeepfakeDataset
 from core.model import build_model
 from torchvision import transforms
 
-# Training script for the deepfake detector model.
-# Loads the dataset, splits into train/val sets, and runs the training loop for a set number of epochs.
-# Each epoch trains on batches, calculates loss, backpropagates, and updates weights.
-# Validates after each epoch to monitor performance, then saves the final weights to model/detector.pth.
 transform = transforms.Compose([
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
@@ -74,4 +74,7 @@ def train(model, train_loader, val_loader, criterion, optimizer, device):
         avg_val_loss = val_loss / len(val_loader)
         print(f"Epoch {epoch+1}/{EPOCHS} - Train Loss: {avg_train_loss:.4f} - Val Loss: {avg_val_loss:.4f}")
 
-torch.save(model.state_dict(), "model/detector.pth")
+if __name__ == "__main__":
+    train(model, train_loader, val_loader, criterion, optimizer, device)
+    torch.save(model.state_dict(), "model/detector.pth")
+    print("Model saved to model/detector.pth")

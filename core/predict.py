@@ -1,7 +1,7 @@
-import torch
-
 # Runs a tensor through the model inside a no_grad context, extracts the raw score.
 # Compares it against the 0.5 threshold, and returns a human readable label and confidence percentage.
+import torch
+
 def predict(model, tensor) -> tuple[str, float]:
     with torch.no_grad():
         output = model(tensor)

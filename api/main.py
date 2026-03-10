@@ -1,3 +1,5 @@
+# Accepts an image upload, converts it to OpenCV format, detects and preprocesses the face,
+# runs it through the model and returns a label and confidence score as a JSON response.
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from api.schemas import PredictionResponse
 from core.preprocess import preprocess_image
@@ -6,8 +8,6 @@ from api.dependencies import model
 import numpy as np
 import cv2 as cv
 
-# Accepts an image upload, converts it to OpenCV format, detects and preprocesses the face,
-# runs it through the model and returns a label and confidence score as a JSON response.
 app = FastAPI()
 
 @app.post("/detect/")
