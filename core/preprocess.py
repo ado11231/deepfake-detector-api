@@ -1,11 +1,12 @@
+# Detects face in image, loads cascade classifier and converts to grayscale.
+# Scans for faces requiring 5 confirmed neighbor detections before accepting a face region.
+# If no face is found returns None, otherwise crops and returns the face using x, y, w, h coordinates.
 import cv2 as cv
 import numpy as np
 import torch
 from torchvision import transforms
 from PIL import Image
 
-# Detects face in image, loads cascade classifier and runs image through it. Stores the faces in a list with a capacity of 5.
-# If faces are not found, it returns none, if faces are found, its slices up into 4 regions, the face and distance from top and left edge
 def detect_face(image):
     detector = cv.CascadeClassifier(cv.data.haarcascades + "haarcascade_frontalface_default.xml")
     image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
@@ -20,8 +21,6 @@ def detect_face(image):
 
     return sliced
 
-# Takes a raw image, detects and crops the face, converts to RGB, then applies
-# resize, tensor conversion and normalization before returning a model-ready tensor.
 def preprocess_image(image):    
     valid_image = detect_face(image)
 
