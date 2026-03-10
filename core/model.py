@@ -30,5 +30,3 @@ def load_model(file, device):
     model.eval()
 
     return model
-
-

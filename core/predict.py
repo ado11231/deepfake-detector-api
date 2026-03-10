@@ -16,12 +16,4 @@ def predict(model, tensor) -> tuple[str, float]:
     else:
         label, confidence = "real", round((1 - score) * 100, 2)
         return label, confidence
-        
-        
-
-
-
-
-
-
-
+    

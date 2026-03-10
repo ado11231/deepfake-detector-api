@@ -30,5 +30,3 @@ class DeepfakeDataset(Dataset):
         tensor = self.transform(image)
 
         return tensor, label
-
-
