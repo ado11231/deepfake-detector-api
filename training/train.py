@@ -50,6 +50,7 @@ def train(model, train_loader, val_loader, criterion, optimizer, device):
         for images, labels in train_loader:
             images = images.to(device)
             labels = labels.to(device)
+            labels = labels.float().unsqueeze(1)
 
             optimizer.zero_grad()
             predictions = model(images)
@@ -66,6 +67,8 @@ def train(model, train_loader, val_loader, criterion, optimizer, device):
             for images, labels in val_loader:
                 images = images.to(device)
                 labels = labels.to(device)
+                labels = labels.float().unsqueeze(1)
+                
                 predictions = model(images)
                 loss = criterion(predictions, labels)
                 val_loss += loss.item()
